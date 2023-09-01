@@ -1,0 +1,54 @@
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 whitespace-nowrap border border-slate-400">
+                    <thead>
+                        <tr>
+                        <th  class="border border-slate-400" colspan="2"></th>
+                        <th  class="border border-slate-400" v-for="machineType in data['data']['machineTypes']" :key="machineType.id" :colspan="brandCount">
+                            {{ machineType.name }}
+                        </th>
+                        </tr>
+                    </thead>
+                    <thead>
+                        <tr>
+                        <th  class="border border-slate-400 text-center" colspan="2">BRAND</th>
+                        <th  class="border border-slate-400" v-for="machineType in data['data']['machineTypes']" :key="machineType.id">
+                            <table class="w-full text-center ">
+                                <tr>
+                                    <td class="border border-slate-400" v-for="brand in machineTypeBrands(machineType)" :key="brand.id">
+                                        {{ brand.name }}
+                                    </td>
+                                </tr>
+                            </table>
+                        </th>
+                        </tr>
+                    </thead>
+                    <thead>
+                        <tr>
+                        <th  class="border border-slate-400 text-center" colspan="2" >MODEL</th>
+                            <th   v-for="machineType in data['data']['machineTypes']" :key="machineType.id">
+
+                            <table class="w-full text-center">
+                                <tr  class="border border-slate-400"   >
+                                    <td  v-for="brand in machineTypeBrands(machineType)" :key="brand.id" v-text="getModelByBrandAndType(machineType.id,brand.id)"></td>
+                                </tr>
+
+                            </table>
+                                    <!-- <span v-for="model in brand.models" :key="model.id">{{ model.model_no }}</span> -->
+
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="department in data['data']['departments']" :key="department.id">
+                        <!-- <th  class="border border-slate-400" :rowspan="department.areas.length">{{ department.name }}</th> -->
+                        <th  class="border border-slate-400" >{{ department.name }}</th>
+                    <td>
+                            <table class="w-full text-center">
+                                <tr v-for="area in department.areas" class="border border-slate-400" :key="area.id">
+                                    <td >{{ area.name }}</td>
+                                </tr>
+
+                            </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                    </table>

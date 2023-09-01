@@ -1,0 +1,143 @@
+@tailwind base;
+
+@layer base{
+
+    :root {
+        --primary-color:  #344767;
+        --secondary-color:#f97316 ;
+        --tertiary-color: #506e35;
+    }
+
+/* scrollbar css start */
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* scrollbar css end */
+
+}
+
+@tailwind components;
+
+
+.required:after {
+    content: '*';
+    color: red;
+    padding-left: 5px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 38px;
+}
+
+.select2-container .select2-selection--single{
+    height:38px;
+    border-color:rgba(209,213,219)
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+    height:38px
+}
+
+.dataTables_wrapper .dataTables_length select {
+    padding-right: 2rem;
+}
+
+.dataTables_empty {
+    padding: 0.75rem;
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+@tailwind utilities;
+
+[x-cloak] {
+    display: none;
+}
+
+.iw-login-bg{
+    background: radial-gradient(circle at 39% 47%, rgba(107, 107, 107, 0.08) 0%, rgba(107, 107, 107, 0.08) 33.333%, rgba(72, 72, 72, 0.08) 33.333%, rgba(72, 72, 72, 0.08) 66.666%, rgba(36, 36, 36, 0.08) 66.666%, rgba(36, 36, 36, 0.08) 99.999%), radial-gradient(circle at 53% 74%, rgba(182, 182, 182, 0.08) 0%, rgba(182, 182, 182, 0.08) 33.333%, rgba(202, 202, 202, 0.08) 33.333%, rgba(202, 202, 202, 0.08) 66.666%, rgba(221, 221, 221, 0.08) 66.666%, rgba(221, 221, 221, 0.08) 99.999%), radial-gradient(circle at 14% 98%, rgba(184, 184, 184, 0.08) 0%, rgba(184, 184, 184, 0.08) 33.333%, rgba(96, 96, 96, 0.08) 33.333%, rgba(96, 96, 96, 0.08) 66.666%, rgba(7, 7, 7, 0.08) 66.666%, rgba(7, 7, 7, 0.08) 99.999%), linear-gradient(45deg, #f79f9b, #0f4069);
+}
+
+.iw-sidebar {
+    transition: width 0.25s ease-in;
+}
+
+body.sidebar-mini aside.iw-sidebar.expand {
+    max-width: 76px;
+}
+
+body.sidebar-mini aside.iw-sidebar .iw-sidenav ul li a span {
+    display: none;
+}
+
+body.sidebar-mini aside.iw-sidebar .iw-sidenav ul li a svg {
+    display: none;
+}
+
+body.sidebar-mini aside.iw-sidebar .iw-sidenav ul ul li a {
+    display: none;
+}
+
+body.sidebar-mini aside.iw-sidebar .iw-sidenav.expand ul ul li a {
+    display: block;
+}
+
+body.sidebar-mini aside.iw-sidebar .iw-sidenav.expand ul li a span{
+    display:block
+}
+
+body.sidebar-mini aside.iw-sidebar .iw-sidenav.expand ul li a svg{
+    display:block
+}
+
+body.sidebar-mini main{
+    margin-left:96px
+}
+
+body.sidebar-mini .iw-topbar {
+    margin-left: 96px;
+}
+
+.iw-logo-collapsed {
+    display: none;
+}
+
+body.sidebar-mini .iw-logo-collapsed {
+    display: block;
+}
+
+
+
+body.sidebar-mini .iw-logo.expand .iw-logo-desktop {
+    display: block;
+}
+
+body.sidebar-mini .iw-logo.expand .iw-logo-collapsed {
+    display: none;
+}
+
+body.sidebar-mini .iw-logo .iw-logo-desktop {
+    display: none;
+}
+
+
+
