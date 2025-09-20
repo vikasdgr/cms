@@ -22,5 +22,12 @@ export default defineConfig({
         alias: {
             '$': 'jQuery',
         },
+    },
+    server: {
+        host: '0.0.0.0',
+        port: 5173,
+        hmr: {
+            host: 'localhost'
+        }
     }
 });

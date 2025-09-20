@@ -1,0 +1,46 @@
+FROM node:18-alpine
+
+# Install dependencies needed for node-gyp
+RUN apk add --no-cache python3 make g++
+
+WORKDIR /var/www/html
+
+# Copy package files
+COPY package*.json ./
+
+# Install npm dependencies
+RUN npm install
+
+# Copy the rest of the application
+COPY . .
+
+# Create entrypoint script
+RUN echo '#!/bin/sh' > /entrypoint.sh && \
+    echo 'set -e' >> /entrypoint.sh && \
+    echo '' >> /entrypoint.sh && \
+    echo '# Wait for files to be mounted' >> /entrypoint.sh && \
+    echo 'sleep 2' >> /entrypoint.sh && \
+    echo '' >> /entrypoint.sh && \
+    echo '# Install dependencies if package.json has changed' >> /entrypoint.sh && \
+    echo 'if [ ! -d "node_modules" ] || [ "package.json" -nt "node_modules" ]; then' >> /entrypoint.sh && \
+    echo '  echo "Installing npm dependencies..."' >> /entrypoint.sh && \
+    echo '  npm install' >> /entrypoint.sh && \
+    echo 'fi' >> /entrypoint.sh && \
+    echo '' >> /entrypoint.sh && \
+    echo '# Ensure Vite config is properly set for Docker' >> /entrypoint.sh && \
+    echo 'if ! grep -q "host: '\''0.0.0.0'\''" vite.config.js; then' >> /entrypoint.sh && \
+    echo '  echo "Vite config needs to be updated for Docker compatibility."' >> /entrypoint.sh && \
+    echo '  echo "Please make sure vite.config.js has server.host set to '\''0.0.0.0'\''."' >> /entrypoint.sh && \
+    echo 'fi' >> /entrypoint.sh && \
+    echo '' >> /entrypoint.sh && \
+    echo '# Clear Vite cache if it exists' >> /entrypoint.sh && \
+    echo 'rm -rf node_modules/.vite' >> /entrypoint.sh && \
+    echo '' >> /entrypoint.sh && \
+    echo '# Start Vite dev server' >> /entrypoint.sh && \
+    echo 'echo "Starting Vite development server..."' >> /entrypoint.sh && \
+    echo 'exec npm run dev' >> /entrypoint.sh && \
+    chmod +x /entrypoint.sh
+
+EXPOSE 5173
+
+ENTRYPOINT ["/entrypoint.sh"]
