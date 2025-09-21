@@ -27,6 +27,10 @@ services:
     ports:
       - "3306:3306"
     volumes:
+      # Persist MySQL data on the host so data survives container recreation.
+      # This maps the host folder d:/RSSB/cms/docker/mysql to MySQL data directory.
+      # - ./docker/mysql:/var/lib/mysql
+      # Alternatively you can use a named volume:
       - db_data:/var/lib/mysql
     restart: unless-stopped
     command: --default-authentication-plugin=mysql_native_password

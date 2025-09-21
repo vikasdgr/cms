@@ -24,6 +24,7 @@ use App\Http\Controllers\Reports\ServiceReportController;
 use App\Http\Controllers\Services\MachineCaseController;
 use App\Http\Controllers\Services\MachineServiceController;
 use App\Http\Controllers\Users\UserController;
+use App\Http\Controllers\Users\RoleController;
 
 /*
 |--------------------------------------------------------------------------
