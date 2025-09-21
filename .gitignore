@@ -17,3 +17,10 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+# Ignore Docker-mounted MySQL data and init scripts
+docker/mysql/
+docker/mysql-init/
+
+# Ignore local node_modules bind mount (if you mount it)
+node_modules/
